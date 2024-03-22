@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import static io.github.bonigarcia.wdm.WebDriverManager.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -18,7 +19,7 @@ public class AppOrderNegativeTest {
 
     @BeforeAll
     public static void setupAll() {
-        WebDriverManager.chromedriver().setup();
+        chromedriver().setup();
     }
 
     @BeforeEach

@@ -1,4 +1,3 @@
-
 package ru.netology.webselenium;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
