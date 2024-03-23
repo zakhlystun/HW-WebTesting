@@ -1,8 +1,6 @@
 package ru.netology.webselenium;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -16,10 +14,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class AppOrderPositiveTest {
     private WebDriver driver;
 
+/*
     @BeforeAll
     public static void setupAll() {
              WebDriverManager.chromedriver().setup();
     }
+*/
 
     @BeforeEach
     public void beforeEach() {
@@ -39,9 +39,9 @@ public class AppOrderPositiveTest {
 
     @Test
     public void shouldBeSuccessfulForm() {
-        driver.findElement(By.cssSelector("[data-test-id='name']input")).sendKeys("Иванов Иван Иванович");
-        driver.findElement(By.cssSelector("[data-test-id='phone']input")).sendKeys("+79123456789");
-        driver.findElement(By.cssSelector("[data-test-id='agreement']input")).click();
+        driver.findElement(By.cssSelector("[data-test-id=name]input")).sendKeys("Иванов Иван");
+        driver.findElement(By.cssSelector("[data-test-id=phone]input")).sendKeys("+79123456789");
+        driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
         driver.findElement(By.cssSelector("button.button")).click();
         var actualTextElement = driver.findElement(By.cssSelector("[data-test-id=order-success]"));
         var actualText = actualTextElement.getText().trim();
@@ -49,5 +49,21 @@ public class AppOrderPositiveTest {
         assertTrue(actualTextElement.isDisplayed());
 
     }
+
+
+    /*
+    @Test
+    public void shouldBeSuccessfulForm() {
+        driver.findElement(By.xpath("@//span[@data-test-id='name']input")).sendKeys("Иванов Иван");
+        driver.findElement(By.xpath("@//span[data-test-id='phone']input")).sendKeys("+79123456789");
+        driver.findElement(By.xpath("@//label[data-test-id='agreement']")).click();
+        driver.findElement(By.xpath("@//button[contains(@class,'button')]")).click();
+        // var actualTextElement = driver.findElement(By.cssSelector("[data-test-id=order-success]"));
+        // var actualText = actualTextElement.getText().trim();
+        assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.",
+                driver.findElement(By.xpath("@//span[data-test-id='name'][contains (@class,'input_invalid')]")).getText().trim());
+        //assertTrue(actualTextElement.isDisplayed());
+
+    }*/
 
 }
